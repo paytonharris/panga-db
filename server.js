@@ -4,7 +4,7 @@ const Joi = require('joi');
 const { enemySchema } = require('./joiSchemas');
 const { getEnemies, saveEnemy, deleteEnemy } = require('./db');
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 
 var router = express.Router();
 
@@ -35,7 +35,8 @@ router.post('/enemy', async (req, res) => {
 
     return res.send('Success');
   } catch (error) {
-    return res.send(`Something went wrong`);
+    res.statusCode = 400;
+    return res.send(`${body.error}`);
   }
 });
  
@@ -51,7 +52,8 @@ router.delete('/enemy', async (req, res) => {
 
     return res.send(`Deleted ${deleted.deletedCount} item(s)`);
   } catch (error) {
-    return res.send(`Something went wrong`);
+    res.statusCode = 400;
+    return res.send(`Something went wrong: ${name.error}`);
   }
 });
 

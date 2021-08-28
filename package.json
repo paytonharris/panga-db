@@ -1,8 +1,14 @@
 {
+  "name": "panga-db",
+  "version": "0.0.1",
+  "private": true,
   "dependencies": {
     "express": "^4.17.1",
     "joi": "^17.4.2",
     "mongodb": "^3.6.11",
     "mongoose": "^5.13.8"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }
